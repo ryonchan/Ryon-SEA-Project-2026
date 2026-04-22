@@ -1,70 +1,475 @@
 html,
-body {
+* {
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* set default font and background for entire page */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: #f5f1e8;
+  color: #2d2d2d;
+}
+
+/* hero Section - Red banner at top */
+.hero {
+  background: #d9352b;
+  color: white;
+  padding: 80px 40px 60px;
+}
+
+.hero-content {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* small tag at top of hero */
+.hero-tag {
+  font-size: 11px;
+  letter-spacing: 3px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+/* lines before and after hero tag */
+.hero-tag::before,
+.hero-tag::after {
+  content: '';
+  height: 1px;
+  width: 40px;
+  background: white;
+}
+
+/* large title text */
+.hero-title {
+  font-size: 7em;
+  font-weight: 800;
+  line-height: 0.9;
+  margin-bottom: 30px;
+  font-family: 'Georgia', serif;
+}
+
+/* yellow italic text in title */
+.hero-accent {
+  color: #f9c74f;
+  font-style: italic;
+}
+
+/* subtitle below main title */
+.hero-subtitle {
+  font-size: 1.3em;
+  line-height: 1.6;
+  max-width: 800px;
+  margin-bottom: 50px;
+  font-weight: 400;
+}
+
+/* grid of 3 stat boxes */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 250px);
+  gap: 20px;
+}
+
+/* individual stat box */
+.stat-box {
+  border: 2px solid rgba(255,255,255,0.4);
+  padding: 30px;
+  border-radius: 4px;
+}
+
+/* large number in stat box */
+.stat-number {
+  font-size: 4em;
+  font-weight: 800;
+  color: #f9c74f;
+  margin-bottom: 8px;
+}
+
+/* label below number in stat box */
+.stat-label {
+  font-size: 11px;
+  letter-spacing: 2px;
+  font-weight: 600;
+}
+
+/* yellow scrolling ticker */
+.ticker {
+  background: #f9c74f;
+  padding: 15px 0;
+  overflow: hidden;
+  border-top: 2px solid #2d2d2d;
+  border-bottom: 2px solid #2d2d2d;
+}
+
+/* text inside ticker that scrolls */
+.ticker-content {
+  display: inline-block;
+  white-space: nowrap;
+  animation: scroll 30s linear infinite;
+  font-weight: 800;
+  font-size: 14px;
+  letter-spacing: 1px;
+}
+
+/* animation for scrolling ticker */
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* white box containing filters and search */
+.order-counter {
+  max-width: 1400px;
+  margin: 40px auto;
+  padding: 30px;
+  background: white;
+  border: 2px solid #2d2d2d;
+  position: relative;
+}
+
+/* header inside order counter */
+.counter-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px dashed #ccc;
+}
+
+.counter-header h3 {
+  font-size: 12px;
+  letter-spacing: 2px;
+  font-weight: 700;
+}
+
+/* Grid layout for search/filters */
+.controls-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1.2fr 1.2fr 1fr;
+  gap: 15px;
+  align-items: center;
+}
+
+/* Styling for text inputs and dropdowns */
+input[type="text"],
+select {
+  padding: 12px 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  font-family: inherit;
+}
+
+/* Container for each slider */
+.slider-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Label above sliders */
+.slider-wrapper label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+/* Red value next to slider label */
+.slider-val {
+  color: #d9352b;
+  font-weight: 800;
+}
+
+/* Styling for range sliders */
+input[type="range"] {
+  width: 100%;
+  height: 6px;
+  background: linear-gradient(to right, #d9352b 0%, #d9352b 66%, #4caf50 66%, #4caf50 100%);
+  border-radius: 3px;
+  outline: none;
+}
+
+/* Yellow buttons (PICKS, VIEW FAVORITES, VIEW ALL) */
+.picks-btn {
+  background: #f9c74f;
+  border: 2px solid #2d2d2d;
+  padding: 12px 24px;
+  font-weight: 800;
+  font-size: 13px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: transform 0.2s;
+}
+
+/* Button grows slightly on hover */
+.picks-btn:hover {
+  transform: scale(1.05);
+}
+
+/* Grid of stall cards (3 columns) */
+#stalls-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  max-width: 1400px;
+  margin: 40px auto;
+  padding: 0 40px;
+}
+
+/* Individual stall card */
+.card {
+  background: #fafafa;
+  border: 2px solid #2d2d2d;
+  position: relative;
+  overflow: visible;
+}
+
+/* "No 01" badge at top left */
+.card-number {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  background: #2d2d2d;
+  color: white;
+  padding: 8px 12px;
+  font-weight: 800;
+  font-size: 11px;
+  letter-spacing: 1px;
+  z-index: 10;
+  font-family: monospace;
+}
+
+/* "RYON'S PICK" badge at top right */
+.picks-badge {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: #d9352b;
+  color: white;
+  padding: 8px 12px;
+  font-weight: 800;
+  font-size: 11px;
+  letter-spacing: 1px;
+  z-index: 10;
+}
+
+/* Heart button for favorites */
+.favorite-btn {
+  position: absolute;
+  top: 250px;
+  right: 15px;
+  background: white;
+  border: 2px solid #2d2d2d;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 20px;
+  cursor: pointer;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s;
+}
+
+/* Heart button grows on hover */
+.favorite-btn:hover {
+  transform: scale(1.1);
+}
+
+/* Yellow background when favorited */
+.favorite-btn.active {
+  background: #f9c74f; 
+}
+
+/* Food image on each card */
+.card-image {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  display: block;
+}
+
+/* Not used - price badge removed */
+.card-price {
+  display: none;
+}
+
+/* Card title section */
+.card-header {
+  background: transparent;
   padding: 0;
 }
 
-.main-header {
-  background-color: rgba(0, 0, 0, 0.3);
-  padding-bottom: 10px;
+/* Stall name title */
+.card-header h2 {
+  font-size: 1.9em;
+  font-weight: 900;
+  padding: 20px 20px 10px;
+  margin: 0;
+  line-height: 1.2;
+  background: transparent;
+  font-family: 'Georgia', serif;
 }
 
-.title {
-  text-align: center;
+/* Card content below image */
+.card-body {
+  padding: 0 20px 20px;
+}
+
+/* Location and rating row */
+.card-meta {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 15px;
+  font-size: 13px;
+  color: #666;
+}
+
+.card-meta p {
   margin: 0;
-  font-size: 8em;
-  font-family: "Helvetica";
-  font-weight: normal;
+}
+
+/* Gold star rating */
+.rating {
+  color: #ffc107;
+  font-weight: 700;
+}
+
+/* Michelin status badge (red) */
+.michelin-badge {
+  display: inline-block;
+  background: #d9352b;
+  color: white;
+  padding: 6px 12px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  margin: 10px 0;
+  border-radius: 0;
+}
+
+/* Beige box for must-order dish */
+.must-order-section {
+  background: #f5f1e8;
+  padding: 12px;
+  margin: 15px 0;
+  border-left: 3px solid #d9352b;
+}
+
+/* "MUST ORDER" label */
+.must-order-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: #666;
+  margin-bottom: 5px;
+}
+
+/* Dish name and price */
+.must-order-dish {
+  font-weight: 700;
+  font-size: 15px;
+  color: #2d2d2d;
+}
+
+/* Hidden description text */
+.description {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #555;
+  margin-top: 10px;
+}
+
+/* "View More" button */
+.view-more-btn {
+  background: transparent;
+  border: 1px solid #2d2d2d;
+  color: #2d2d2d;
+  padding: 8px 16px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-top: 15px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+/* Button inverts colors on hover */
+.view-more-btn:hover {
+  background: #2d2d2d;
   color: white;
 }
 
-#card-container {
-  display: flex;
-  justify-content: center;
-  margin: 20px;
+/* About me section with text and photo */
+.about-section {
+  background: white;
+  padding: 80px 40px;
+  border-top: 2px solid #2d2d2d;
+  border-bottom: 2px solid #2d2d2d;
 }
 
-.card {
-  width: 300px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  margin: 5px;
+/* Two-column layout: text left, photo right */
+.about-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 60px;
+  align-items: center;
 }
 
-.card-content {
-  padding: 20px;
-  font-family: "Verdana";
-  color: #777;
+/* About section title */
+.about-text h2 {
+  font-family: 'Georgia', serif;
+  font-size: 2.5em;
+  font-weight: 900;
+  margin-bottom: 30px;
+  color: #2d2d2d;
 }
 
-.card-content h2 {
-  margin-top: 0;
-  font-size: 20px;
+/* About section paragraphs */
+.about-text p {
+  font-size: 16px;
+  line-height: 1.8;
+  margin-bottom: 20px;
+  color: #555;
 }
 
-.card img {
+/* Signature line at bottom */
+.signature {
+  font-family: 'Georgia', serif;
+  font-style: italic;
+  font-weight: 700;
+  color: #d9352b;
+  margin-top: 30px;
+}
+
+/* Photo container */
+.about-image {
+  position: relative;
+}
+
+/* Family photo */
+.about-image img {
   width: 100%;
   height: auto;
+  border: 3px solid #2d2d2d;
+  display: block;
 }
 
-.footer {
-  display: flex;
-  justify-content: center;
-  background-color: rgba(0, 0, 0, 0.3);
-  padding: 10px;
-}
-
-button {
+/* Caption below photo */
+.image-caption {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #666;
+  margin-top: 10px;
   text-align: center;
-  background-color: #666;
-  border: none;
-  padding-left: 10px;
-  padding-right: 10px;
-  height: 40px;
-  border-radius: 10px;
-  color: white;
-  font-size: 22px;
-  cursor: pointer;
-  margin: 5px;
 }

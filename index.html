@@ -1,31 +1,111 @@
 <!doctype html>
 <html>
   <head>
-    <title>LA TV Shows | Home</title>
-    <meta name="description" content="A Catalog of Shows Set in Los Angeles" />
+    <title>Singapore Hawker Stalls | Home</title>
+    <meta name="description" content="50 Recommended Hawker Stalls in Singapore" />
     <link rel="stylesheet" href="style.css" />
-    <script type="text/javascript" src="scripts.js"></script>
   </head>
 
   <body>
-    <header class="main-header">
-      <h1 class="title">LA TV Shows</h1>
-    </header>
-    <div id="card-container"></div>
-    <div class="card" style="display: none">
-      <div class="card-content">
-        <h2>TV Show Title</h2>
-        <img src="" alt="TV Show Poster" />
-        <ul>
-          <li>Bullet Point 1</li>
-          <li>Bullet Point 2</li>
-          <li>Bullet Point 3</li>
-        </ul>
+    <section class="hero">
+      <div class="hero-content">
+        <p class="hero-tag">RYON'S HAWKER STALLS</p>
+        <h1 class="hero-title">Eat Like a<br><span class="hero-accent">Singapore Local, lah.</span></h1>
+        <p class="hero-subtitle">A guide to Singapore's best hawker stalls — my specially curated catalog of dishes worth flying for.</p>
+        
+        <div class="stats-grid">
+          <div class="stat-box">
+            <div class="stat-number">50</div>
+            <div class="stat-label">STALLS CATALOGUED</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-number">30</div>
+            <div class="stat-label">MICHELIN RECOGNISED</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-number">4.1★</div>
+            <div class="stat-label">AVG. SCORE</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- about me -->
+    <section class="about-section">
+      <div class="about-content">
+        <div class="about-text">
+          <h2>My love for Singapore Cuisine</h2>
+          <p>Hi Snap Academy Team!</p>
+          <p>My name is Ryon, and I grew up in a tiny city-state called Singapore (a vast 8600 miles away!). This is a food catalog page which I have specially curated displaying my recommendations for the best street food stalls in Singapore, also known as 'hawker' stalls.
+            Hawker stalls encapsulate a significant part of my identity, as it represents food arising from Singapore's melting pot of cultures : Chinese, Malay, Indian, Peranakan. Every stall typically sell a single, distinct and perfected item at an affordable price. 
+            Recipes have been passed down for generations and kept a highly affordable price to continue serving the community.
+            Every weekend, my family and I used to indulge in a feast of different hawker food items (they are usually only $3-6USD)</p> 
+          <p>After moving to California for college, I realized how much I missed those memories. I hope this catalog shares to the Snap Team a little about where I came from — 50 stalls that define what Singapore tastes like.</p>
+          <p>From $2 curry puffs to Michelin-starred pork noodles, every stall here has earned its place through decades of waking at dawn, perfecting one dish, and feeding generations of Singaporeans.</p>
+          
+          <p class="signature">— Made by Ryon (while hungry)</p>
+        </div>
+        
+        <div class="about-image">
+          <img src="images/Ryon Family Pic.JPG" alt="Ryon at a Singapore hawker center">
+          <p class="image-caption">Bedok Food Centre, 2024 (I'm in the middle 😊)</p>
+        </div>
+      </div>
+    </section>
+
+    <!--constantly moving ticker-->
+    <div class="ticker">
+      <div class="ticker-content">
+        🔥 SMOKY WOK HEI 🥢 QUEUES WORTH THE WAIT ⭐ MICHELIN RECOGNIZED 🍜 HOLE-IN-THE-WALL HAWKER LEGENDS 💯 HAND-PULLED, CHARCOAL-FIRED, FAMILY-PERFECTED 🇸🇬 EXPERIENCE SINGAPORE 🔥 SMOKY WOK HEI 🥢 QUEUES WORTH THE WAIT ⭐ MICHELIN RECOGNIZED 🍜 HOLE-IN-THE-WALL HAWKER LEGENDS 💯 HAND-PULLED, CHARCOAL-FIRED, FAMILY-PERFECTED 🇸🇬 EXPERIENCE SINGAPORE
       </div>
     </div>
-    <div class="footer">
-      <button onclick="quoteAlert()">Get A Quote!</button>
-      <button onclick="removeLastCard()">Remove A Card!</button>
+
+    <div class="order-counter">
+      <div class="counter-header">
     </div>
+
+    <!--grid -->
+    <div class="controls-grid">
+      <input type="text" id="search-bar" placeholder="Search stall, dish, or centre...">
+      <select id="region-filter">
+        <option value="all">All Regions</option>
+        <option value="Central">Central</option>
+        <option value="East">East</option>
+          <option value="West">West</option>
+        </select>
+        <select id="michelin-filter">
+          <option value="all">All</option>
+          <option value="One Michelin-Starred">Michelin Starred</option>
+          <option value="Bib Gourmand">Michelin Bib Gourmand</option>
+          <option value="None">None</option>
+        </select>
+        <div class="slider-wrapper">
+          <label>MAX PRICE <span id="price-value" class="slider-val">$20</span></label>
+          <input type="range" id="price-slider" min="0" max="30" value="20">
+        </div>
+        <div class="slider-wrapper">
+          <label>MIN RATING <span id="rating-value" class="slider-val">0</span>★</label>
+          <input type="range" id="rating-slider" min="0" max="5" step="0.1" value="0">
+        </div>
+        <select id="sort">
+          <option value="default">Featured</option>
+          <option value="Name(A-Z)">Name (A-Z)</option>
+          <option value="price(low - high)">Price: Low → High</option>
+          <option value="price(high - low)">Price: High → Low</option>
+          <option value="rating(low - high)">Rating: Low → High</option>
+          <option value="rating(high - low)">Rating: High → Low</option>
+        </select>
+      </div>
+    </div>
+
+    <div style="max-width: 1400px; margin: 20px auto; padding: 0 40px;">
+      <button id="recommended-btn" style="background: #f9c74f; border: 2px solid #2d2d2d; padding: 12px 24px; font-weight: 800; font-size: 13px; cursor: pointer; border-radius: 4px;">★ RYON'S PICKS</button>
+      <button id="view-favorites-btn" style="background: #f9c74f; border: 2px solid #2d2d2d; padding: 12px 24px; font-weight: 800; font-size: 13px; cursor: pointer; border-radius: 4px; margin-left: 10px;">♥ VIEW FAVORITES</button>
+      <button id="view-all-btn" style="background: white; border: 2px solid #2d2d2d; padding: 12px 24px; font-weight: 800; font-size: 13px; cursor: pointer; border-radius: 4px; margin-left: 10px;">VIEW ALL</button>
+    </div>
+
+    <div id="stalls-container"></div>
+    <script src="scripts.js"></script>
+    
   </body>
 </html>
